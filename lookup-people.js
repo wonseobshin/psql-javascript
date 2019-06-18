@@ -18,7 +18,7 @@ client.connect((err) => {
 
   console.log("successfully connected");
 
-  client.query(`SELECT * FROM famous_people WHERE first_name LIKE $1`, args, (err, res) => {
+  client.query(`SELECT * FROM famous_people WHERE first_name LIKE $1 OR last_name LIKE $1`, args, (err, res) => {
     if(err) throw err;
     res.rows.forEach((element) => {
       const simpleDOBArr = element.birthdate.toString().split(' ');
